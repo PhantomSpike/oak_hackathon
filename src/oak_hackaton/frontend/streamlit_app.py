@@ -80,7 +80,17 @@ def create_plot(df, year8_units):
     return fig
 
 # Create the Streamlit app
-st.markdown("<h1 style='text-align: center;'>Year 8 Mathematics Curriculum</h1>", unsafe_allow_html=True)
+logo_path = "/Users/alex/Desktop/Code/Oak_hackathon/oak_hackathon/oak_data/logos.png"
+
+# Create a 3-column layout for the logo
+left_col, center_col, right_col = st.columns([1, 2, 1])
+
+# Display the logo in the center column
+with center_col:
+    st.image(logo_path, width=400)  # Adjust the width as needed
+
+st.markdown("<h2 style='text-align: center;'>TESSA: Tailored Education Set Selection Application</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>Year 8 Mathematics Curriculum</h2>", unsafe_allow_html=True)
 
 # File uploader
 uploaded_file = st.file_uploader("Upload an Excel File With the Exam Results of Your Student", type="xlsx")
@@ -89,10 +99,10 @@ if uploaded_file is not None:
     with st.spinner('Processing uploaded data with cutting edge AI... 🤖'):
         time.sleep(5)  # Wait for 5 seconds to give the illusion of processing
     df = process_uploaded_data(uploaded_file)
-    stream_type = "Personalised Stream"
+    stream_type = "Personalised Curriculum"
 else:
     df = load_default_data()
-    stream_type = "Default Stream"
+    stream_type = "Default Curriculum"
 
 df = prepare_data_for_plotting(df)
 
