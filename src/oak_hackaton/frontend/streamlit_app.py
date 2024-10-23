@@ -83,11 +83,11 @@ def create_plot(df, year8_units):
 st.markdown("<h1 style='text-align: center;'>Year 8 Mathematics Curriculum</h1>", unsafe_allow_html=True)
 
 # File uploader
-uploaded_file = st.file_uploader("Upload an Excel file", type="xlsx")
+uploaded_file = st.file_uploader("Upload an Excel File With the Exam Results of Your Student", type="xlsx")
 
 if uploaded_file is not None:
-    with st.spinner('Processing uploaded data...'):
-        time.sleep(3)  # Wait for 3 seconds to give the illusion of processing
+    with st.spinner('Processing uploaded data with cutting edge AI... 🤖'):
+        time.sleep(5)  # Wait for 5 seconds to give the illusion of processing
     df = process_uploaded_data(uploaded_file)
     stream_type = "Personalised Stream"
 else:
