@@ -14,6 +14,9 @@ with open(f'{base_dir}/year8_units.json', 'r') as f:
 # Load the DataFrame from CSV
 df = pd.read_csv(f'{base_dir}/unit_weights.csv')
 
+# Load uploaded file
+
+
 # Calculate weeks for each unit (assuming weights sum to 1)
 total_weeks = 36
 df['weeks'] = (df['Default_lesson_weights'] * total_weeks).round().astype(int)
@@ -33,6 +36,10 @@ st.markdown("<h1 style='text-align: center;'>Year 8 Mathematics Curriculum</h1>"
 col1, col2, col3 = st.columns([1, 30, 1])
 
 with col2:
+    uploaded_file = st.file_uploader("Upload student test scores", type=None, accept_multiple_files=False,
+                     kwargs=None, disabled=False, label_visibility="visible")
+    if uploaded_file is not None:
+        df = pd.read_excel(uploaded_file)
     # Create the plot
     fig = go.Figure()
 
