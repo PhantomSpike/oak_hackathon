@@ -29,8 +29,8 @@ def api_get(endpoint: str) -> Any:
         return print(f"HTTP error {e}")
     return response.json()
 
-def get_units(key_stage: str) -> Any:
-    endpoint = f"/key-stages/{key_stage}/subject/maths/units"
+def get_units(key_stage: str, subject: str) -> Any:
+    endpoint = f"/key-stages/{key_stage}/subject/{subject}/units"
     response = api_get(endpoint)
     unit_list = [unit["unitTitle"] for unit in response]
     return unit_list
